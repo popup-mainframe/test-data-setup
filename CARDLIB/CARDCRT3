@@ -1,0 +1,70 @@
+  SET CURRENT SQLID = 'IBMUSER';                                        00010000
+                                                                        00020000
+    CREATE TABLESPACE EMPTS03                                           00030000
+       IN EMPDB                                                         00040000
+       FREEPAGE 0                                                       00050000
+       PCTFREE 10                                                       00060000
+       GBPCACHE CHANGED                                                 00070000
+       TRACKMOD YES                                                     00080000
+       LOGGED                                                           00090000
+       SEGSIZE 64                                                       00100000
+       BUFFERPOOL BP3                                                   00110000
+       LOCKSIZE ANY                                                     00120000
+       LOCKMAX SYSTEM                                                   00130000
+       CLOSE YES                                                        00140000
+       COMPRESS YES                                                     00150000
+       CCSID   EBCDIC                                                   00160000
+       DEFINE YES                                                       00170000
+       MAXROWS 255;                                                     00180000
+                                                                        00190000
+    CREATE TABLE EMPDBCR.T_EMP_PROJECT                                  00200000
+    (EMPNO     INTEGER       NOT NULL,                                  00210000
+     PROJNO    CHAR(6)       NOT NULL,                                  00220000
+     EMPTIME   DECIMAL(5,2),                                            00230000
+     EMSDATE   DATE,                                                    00240000
+     EMENDATE  DATE,                                                    00250000
+     FOREIGN KEY REPAE (EMPNO) REFERENCES EMPDBCR.T_EMP_PERSONAL        00260000
+     ON DELETE RESTRICT                                                 00270000
+    )                                                                   00280000
+    IN EMPDB.EMPTS03                                                    00290000
+    AUDIT NONE                                                          00300000
+    DATA CAPTURE NONE                                                   00310000
+    CCSID EBCDIC                                                        00320000
+    NOT VOLATILE                                                        00330000
+    APPEND NO;                                                          00340000
+                                                                        00350000
+    GRANT ALTER,DELETE,INSERT,SELECT,INDEX,UPDATE,REFERENCES            00360000
+      ON TABLE EMPDBCR.T_EMP_PROJECT TO PUBLIC;                         00370000
+                                                                        00380000
+    CREATE UNIQUE INDEX EMPIX.EPROJIX1                                  00390000
+       ON EMPDBCR.T_EMP_PROJECT                                         00400000
+       (                                                                00410000
+         PROJNO,EMSDATE,EMPNO ASC                                       00420000
+       )                                                                00430000
+       FREEPAGE 0                                                       00440000
+       PCTFREE  0                                                       00450000
+       GBPCACHE CHANGED                                                 00460000
+       CLUSTER                                                          00470000
+       COMPRESS NO                                                      00480000
+       INCLUDE NULL KEYS                                                00490000
+       BUFFERPOOL BP2                                                   00500000
+       CLOSE YES                                                        00510000
+       COPY NO                                                          00520000
+       DEFER NO                                                         00530000
+       PIECESIZE 2 G;                                                   00540000
+                                                                        00550000
+    CREATE INDEX EMPIX.EPROJIX2                                         00560000
+       ON EMPDBCR.T_EMP_PROJECT                                         00570000
+       (                                                                00580000
+         EMPNO ASC                                                      00590000
+       )                                                                00600000
+       FREEPAGE 0                                                       00610000
+       PCTFREE  0                                                       00620000
+       GBPCACHE CHANGED                                                 00630000
+       COMPRESS NO                                                      00640000
+       INCLUDE NULL KEYS                                                00650000
+       BUFFERPOOL BP2                                                   00660000
+       CLOSE YES                                                        00670000
+       COPY NO                                                          00680000
+       DEFER NO                                                         00690000
+       PIECESIZE 2 G;                                                   00700000

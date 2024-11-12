@@ -1,0 +1,38 @@
+  SET CURRENT SQLID = 'IBMUSER';                                        00010000
+                                                                        00020000
+    CREATE TABLESPACE EMPTS04                                           00030000
+       IN EMPDB                                                         00040000
+       FREEPAGE 0                                                       00050000
+       PCTFREE 10                                                       00060000
+       GBPCACHE CHANGED                                                 00070000
+       TRACKMOD YES                                                     00080000
+       LOGGED                                                           00090000
+       SEGSIZE 64                                                       00100000
+       BUFFERPOOL BP3                                                   00110000
+       LOCKSIZE ANY                                                     00120000
+       LOCKMAX SYSTEM                                                   00130000
+       CLOSE YES                                                        00140000
+       COMPRESS YES                                                     00150000
+       CCSID   EBCDIC                                                   00160000
+       DEFINE YES                                                       00170000
+       MAXROWS 255;                                                     00180000
+                                                                        00190000
+    CREATE TABLE EMPDBCR.T_EMP_ADDRESS                                  00200000
+    (EMPNO         CHAR(04),                                            00210004
+     ADDRLINE1     CHAR(40) NOT NULL,                                   00220002
+     ADDRLINE2     CHAR(40),                                            00230000
+     CITY          CHAR(20),                                            00240000
+     STATE         CHAR(20),                                            00250000
+     COUNTRY       CHAR(20),                                            00260000
+     ZIP          CHAR(7)                                               00270000
+    )                                                                   00280000
+    IN EMPDB.EMPTS04                                                    00290000
+    AUDIT NONE                                                          00300000
+    DATA CAPTURE NONE                                                   00310000
+    CCSID EBCDIC                                                        00320000
+    NOT VOLATILE                                                        00330000
+    APPEND NO;                                                          00340000
+                                                                        00350000
+    GRANT ALTER,DELETE,INSERT,SELECT,INDEX,UPDATE,REFERENCES            00360000
+      ON TABLE EMPDBCR.T_EMP_ADDRESS TO PUBLIC;                         00370000
+                                                                        00380000

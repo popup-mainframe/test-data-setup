@@ -1,0 +1,82 @@
+  SET CURRENT SQLID = 'IBMUSER';                                        00010000
+                                                                        00020000
+    CREATE TABLESPACE EMPTS01                                           00030000
+       IN EMPDB                                                         00040000
+       FREEPAGE 0                                                       00050000
+       PCTFREE 10                                                       00060000
+       GBPCACHE CHANGED                                                 00070000
+       TRACKMOD YES                                                     00080000
+       LOGGED                                                           00090000
+       SEGSIZE 64                                                       00100000
+       BUFFERPOOL BP3                                                   00110000
+       LOCKSIZE ANY                                                     00120000
+       LOCKMAX SYSTEM                                                   00130000
+       CLOSE YES                                                        00140000
+       COMPRESS YES                                                     00150000
+       CCSID   EBCDIC                                                   00160000
+       DEFINE YES                                                       00170000
+       MAXROWS 255;                                                     00180000
+                                                                        00190000
+    CREATE TABLE EMPDBCR.T_EMP_PERSONAL                                 00200000
+    (EMPNO         INTEGER NOT NULL,                                    00210000
+     FIRSTNAME     CHAR(12) NOT NULL,                                   00220001
+     MIDINIT      CHAR(1),                                              00230000
+     LASTNAME     CHAR(15),                                             00240000
+     FULLNAME     CHAR(28),                                             00250000
+     WORKDEPT     CHAR(3),                                              00260000
+     PHONENO      CHAR(10),                                             00270000
+     HIREDATE     DATE,                                                 00280000
+     JOB          CHAR(30),                                             00290000
+     EDLEVEL      SMALLINT,                                             00300000
+     SEX          CHAR(1),                                              00310000
+     BIRTHDATE    DATE,                                                 00320000
+     SALARY       DECIMAL(9,2),                                         00330000
+     BONUS        DECIMAL(9,2),                                         00340000
+     COMM         DECIMAL(9,2),                                         00350000
+     SSN          CHAR(11),                                             00360000
+     EMAIL        VARCHAR(200),                                         00370000
+     PRIMARY KEY  (EMPNO)                                               00380000
+    )                                                                   00390000
+    IN EMPDB.EMPTS01                                                    00400000
+    AUDIT NONE                                                          00410000
+    DATA CAPTURE NONE                                                   00420000
+    CCSID EBCDIC                                                        00430000
+    NOT VOLATILE                                                        00440000
+    APPEND NO;                                                          00450000
+                                                                        00460000
+    GRANT ALTER,DELETE,INSERT,SELECT,INDEX,UPDATE,REFERENCES            00470000
+      ON TABLE EMPDBCR.T_EMP_PERSONAL TO PUBLIC;                        00480000
+                                                                        00490000
+                                                                        00500000
+    CREATE UNIQUE INDEX EMPIX.EPERSIX1                                  00510000
+       ON EMPDBCR.T_EMP_PERSONAL                                        00520000
+       (                                                                00530000
+         EMPNO ASC                                                      00540000
+       )                                                                00550000
+       FREEPAGE 0                                                       00560000
+       PCTFREE  0                                                       00570000
+       GBPCACHE CHANGED                                                 00580000
+       CLUSTER                                                          00590000
+       COMPRESS NO                                                      00600000
+       INCLUDE NULL KEYS                                                00610000
+       BUFFERPOOL BP2                                                   00620000
+       CLOSE YES                                                        00630000
+       COPY NO                                                          00640000
+       DEFER NO                                                         00650000
+       PIECESIZE 2 G;                                                   00660000
+                                                                        00670000
+    CREATE INDEX EMPIX.EPERSIX2                                         00680000
+       ON EMPDBCR.T_EMP_PERSONAL                                        00690000
+       (                                                                00700000
+        WORKDEPT ASC                                                    00710000
+       )                                                                00720000
+       FREEPAGE 0                                                       00730000
+       PCTFREE  0                                                       00740000
+       GBPCACHE CHANGED                                                 00750000
+       COMPRESS NO                                                      00760000
+       INCLUDE NULL KEYS                                                00770000
+       BUFFERPOOL BP2                                                   00780000
+       CLOSE YES                                                        00790000
+       COPY NO                                                          00800000
+       DEFER NO                                                         00810000
+       PIECESIZE 2 G;                                                   00820000

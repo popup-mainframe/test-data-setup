@@ -1,0 +1,8 @@
+.gitattributes zos-working-tree-encoding=ISO8859-1
+.gitignore zos-working-tree-encoding=ISO8859-1
+.pmgit/* zos-working-tree-encoding=ISO8859-1
+README.md zos-working-tree-encoding=ISO8859-1
+dsNames zos-working-tree-encoding=IBM-1047 git-encoding=ISO8859-1
+CARDLIB/* zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
+JCL/* zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
+PROCLIB/* zos-working-tree-encoding=ibm-1047 git-encoding=utf-8

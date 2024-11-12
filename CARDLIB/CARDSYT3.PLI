@@ -1,0 +1,4 @@
+DSN SYSTEM(DBCG)                                                        00010000
+RUN PROGRAM(DSNTEP2)  -                                                 00020000
+    LIB('DSNC10.DBCG.RUNLIB.LOAD')                                      00030000
+END                                                                     00040000
